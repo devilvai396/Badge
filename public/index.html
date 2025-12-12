@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Badge</title>
+
+  <meta property="og:title" content="Badge" />
+  <meta property="og:description" content="Type a name, pick a vibe, and generate a crisp badge you can copy or download. Perfect for daily identity, events, and profiles." />
+  <meta property="og:image" content="https://{DOMAIN}/assets/hero.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://{DOMAIN}/" />
+
+  <meta name="fc:miniapp" content="{&quot;version&quot;: &quot;1&quot;, &quot;imageUrl&quot;: &quot;https://{DOMAIN}/assets/embed-3x2.png&quot;, &quot;button&quot;: {&quot;title&quot;: &quot;Open&quot;, &quot;action&quot;: {&quot;type&quot;: &quot;launch_frame&quot;, &quot;url&quot;: &quot;https://{DOMAIN}/&quot;}}, &quot;splashImageUrl&quot;: &quot;https://{DOMAIN}/assets/splash.png&quot;, &quot;splashBackgroundColor&quot;: &quot;#fff7ed&quot;}" />
+
+  <meta property="fc:frame" content="vNext" />
+  <meta property="fc:frame:image" content="https://{DOMAIN}/assets/embed-3x2.png" />
+  <meta property="fc:frame:button:1" content="Open" />
+  <meta property="fc:frame:button:1:action" content="link" />
+  <meta property="fc:frame:button:1:target" content="https://{DOMAIN}/" />
+
+  <meta property="fc:frame:action" content="launch_frame" />
+  <meta property="fc:frame:post_url" content="https://{DOMAIN}/" />
+  <meta property="fc:frame:splash_image" content="https://{DOMAIN}/assets/splash.png" />
+  <meta property="fc:frame:splash_background_color" content="#fff7ed" />
+
+  <style>
+    :root {
+      --bg:#fff7ed; --ink:#0f172a; --muted:#475569; --line:rgba(15,23,42,.20);
+      --shadow:0 18px 50px rgba(15,23,42,.20); --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(14,165,233,.22), transparent 60%),
+        radial-gradient(900px 600px at 85% 30%, rgba(236,72,153,.18), transparent 62%),
+        radial-gradient(800px 600px at 50% 95%, rgba(245,158,11,.18), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    .page{min-height:100%;display:flex;justify-content:center;padding:16px}
+    .shell{width:100%;max-width:620px;display:flex;flex-direction:column;gap:12px}
+    .banner{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 14px;border:1px solid var(--line);border-radius:16px;
+      background:rgba(255,255,255,.55);backdrop-filter:blur(10px);
+      box-shadow:0 10px 30px rgba(15,23,42,.08);
+    }
+    .title strong{font-size:14px;letter-spacing:.16em}
+    .title span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+    #status{font-size:12px;color:var(--muted);text-align:right;max-width:240px;line-height:1.2}
+
+    .wrap{display:flex;flex-direction:column;gap:12px}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 4px}
+    .logo{font-weight:950;letter-spacing:.20em;font-size:13px}
+    .sub{font-size:12px;color:var(--muted);margin-top:3px}
+
+    .card{border:1px solid var(--line);background:rgba(255,255,255,.62);box-shadow:var(--shadow);border-radius:var(--radius);padding:14px}
+    .hint{font-size:12px;color:var(--muted);line-height:1.25;margin-bottom:10px}
+    .row{display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:10px}
+    input{width:100%;padding:12px 12px;border-radius:16px;border:1px solid rgba(15,23,42,.22);background:rgba(255,255,255,.8);color:var(--ink);font-size:14px;outline:none}
+    input:focus{border-color:rgba(14,165,233,.8);box-shadow:0 0 0 3px rgba(14,165,233,.18)}
+    canvas{width:100%;height:210px;border-radius:18px;border:1px solid rgba(15,23,42,.18);background:#fff;margin-bottom:12px}
+
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btn{border:1px solid rgba(15,23,42,.22);background:rgba(255,255,255,.9);color:var(--ink);border-radius:16px;padding:12px 12px;font-weight:900;font-size:14px;cursor:pointer}
+    .btn.ghost{background:transparent}
+    .styleTitle{margin-top:12px;font-size:12px;color:var(--muted);letter-spacing:.10em}
+    .styles{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{display:flex;align-items:center;gap:8px;border:1px solid rgba(15,23,42,.18);background:rgba(255,255,255,.75);color:var(--ink);border-radius:999px;padding:8px 10px;font-size:12px;cursor:pointer}
+    .chip.on{border-color:rgba(236,72,153,.55);box-shadow:0 0 0 3px rgba(236,72,153,.14)}
+    .sw{width:12px;height:12px;border-radius:999px}
+
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 4px;color:var(--muted);font-size:12px}
+    .envpill{padding:6px 10px;border-radius:999px;border:1px solid rgba(15,23,42,.18);background:rgba(255,255,255,.6)}
+
+    @media (max-width:380px){.row{grid-template-columns:1fr} .actions{grid-template-columns:1fr} #status{max-width:170px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <div class="banner">
+        <div class="title">
+          <strong>Badge</strong>
+          <span>Make a name sticker.</span>
+        </div>
+        <div id="status">Loading…</div>
+      </div>
+      <div id="app" aria-label="Badge Mini App"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
